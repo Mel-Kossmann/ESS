@@ -1,0 +1,12 @@
+C:\Projects\employee-storage-service\Portal\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.deps.json
+C:\Projects\employee-storage-service\Portal\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.runtimeconfig.json
+C:\Projects\employee-storage-service\Portal\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.runtimeconfig.dev.json
+C:\Projects\employee-storage-service\Portal\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.dll
+C:\Projects\employee-storage-service\Portal\DataAccessLayer\bin\Debug\netcoreapp3.1\DataAccessLayer.pdb
+C:\Projects\employee-storage-service\Portal\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.csprojAssemblyReference.cache
+C:\Projects\employee-storage-service\Portal\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.AssemblyInfoInputs.cache
+C:\Projects\employee-storage-service\Portal\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.AssemblyInfo.cs
+C:\Projects\employee-storage-service\Portal\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Projects\employee-storage-service\Portal\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.dll
+C:\Projects\employee-storage-service\Portal\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.pdb
+C:\Projects\employee-storage-service\Portal\DataAccessLayer\obj\Debug\netcoreapp3.1\DataAccessLayer.genruntimeconfig.cache
