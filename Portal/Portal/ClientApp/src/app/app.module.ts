@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { AverageSalaryComponent } from './average-salary/average-salary.component';
 import { DetailedViewComponent } from './detailed-view/detailed-view.component';
 import { AddCompanyComponent } from './add-company/add-company.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 import { DxAccordionModule, DxButtonModule, DxChartModule, DxCheckBoxModule, DxDataGridModule, DxDropDownBoxModule, DxFormModule, DxGalleryModule, DxPieChartModule, DxPopoverModule, DxPopupModule, DxScrollViewModule, DxSelectBoxModule, DxSliderModule, DxTabPanelModule, DxTabsModule, DxTagBoxModule, DxTemplateModule, DxTooltipModule, DxTreeViewModule } from 'devextreme-angular';
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DxAccordionModule, DxButtonModule, DxChartModule, DxCheckBoxModule, DxD
     HomeComponent,
     AverageSalaryComponent,
     DetailedViewComponent,
-    AddCompanyComponent
+    AddCompanyComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -50,6 +52,7 @@ import { DxAccordionModule, DxButtonModule, DxChartModule, DxCheckBoxModule, DxD
       { path: 'average-salary', component: AverageSalaryComponent },
       { path: 'detailed-view', component: DetailedViewComponent },
       { path: 'add-company', component: AddCompanyComponent },
+      { path: 'about-us', component: AboutUsComponent },
     ])
   ],
   providers: [],
