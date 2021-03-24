@@ -41,6 +41,18 @@ namespace Portal.Controllers
             var Obj = new DataAccessLayer.DBc.Employee();
             JsonConvert.PopulateObject(values, Obj);
 
+            var validate = db.Employees.Where(e =>
+               e.Name == Obj.Name
+               && e.Surname == Obj.Surname
+               && e.Email == Obj.Email
+               && e.Address == Obj.Address
+            ).FirstOrDefault();
+
+            if (validate != null)
+            {
+                return BadRequest("The employee already exists.");
+            }
+
             db.Employees.Add(Obj);
             await db.SaveChangesAsync();
 
@@ -53,8 +65,20 @@ namespace Portal.Controllers
             var Obj = await db.Employees.FirstOrDefaultAsync(i => i.Id == key);
 
             if (Obj == null) return StatusCode(409, "not found");
-
             JsonConvert.PopulateObject(values, Obj);
+
+            var validate = db.Employees.Where(e => 
+                e.Name == Obj.Name
+                && e.Surname == Obj.Surname
+                && e.Email == Obj.Email
+                && e.Address == Obj.Address
+                && e.Id != Obj.Id
+            ).FirstOrDefault();
+
+            if(validate != null)
+            {
+                return BadRequest("The employee already exists.");
+            }
 
             await db.SaveChangesAsync();
             return Ok(Obj.Id);

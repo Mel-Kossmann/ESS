@@ -35,6 +35,11 @@ namespace Portal.Controllers
         {
             var Obj = new DataAccessLayer.DBc.Company();
             JsonConvert.PopulateObject(values, Obj);
+            var validate = db.Companies.Where(c => c.Name == Obj.Name).FirstOrDefault();
+            if(validate != null)
+            {
+                return BadRequest("Company name already exists.");
+            }
 
             db.Companies.Add(Obj);
             await db.SaveChangesAsync();
@@ -50,6 +55,12 @@ namespace Portal.Controllers
             if (Obj == null) return StatusCode(409, "not found");
 
             JsonConvert.PopulateObject(values, Obj);
+            var validate = db.Companies.Where(c => c.Name == Obj.Name && c.Id != Obj.Id).FirstOrDefault();
+
+            if(validate != null)
+            {
+                return BadRequest("Company name already exists.");
+            }
 
             await db.SaveChangesAsync();
             return Ok(Obj.Id);
