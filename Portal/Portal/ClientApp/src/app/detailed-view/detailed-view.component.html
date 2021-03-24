@@ -1,28 +1,41 @@
-<dx-data-grid id="gridContainer"
-              [dataSource]="dataSource"
-              [allowColumnReordering]="true"
-              [showBorders]="true">
+<section class="content container-fluid">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-lg-12">
+        <div class="box box-default page-box" style="height: auto !important;">
+          <div class="box-header">
+            <div class="icon-inline"><em class="material-icons material-icons-headings-gy">list_alt</em><h2>Detailed View</h2></div>
+          </div>
+          <dx-data-grid id="gridContainer"
+                        [dataSource]="dataSource"
+                        [allowColumnReordering]="true"
+                        [showBorders]="true">
 
-  <dxi-column dataField="name" caption="Name"></dxi-column>
-  <dxi-column dataField="surname" caption="Surname"></dxi-column>
-  <dxi-column dataField="email" caption="Email"></dxi-column>
-  <dxi-column dataField="address" caption="Address"></dxi-column>
-  <dxi-column dataField="salary" caption="Salary"></dxi-column>
-  <dxi-column dataField="companyId" caption="Company Name" [groupIndex]="0">
-    <dxo-lookup [dataSource]="CompanyForeignDataSource"
-                displayExpr="name"
-                valueExpr="id">
-    </dxo-lookup>
-  </dxi-column>
-  <dxo-summary>
-    <dxi-group-item column="salary"
-                    summaryType="count"
-                    [alignByColumn]="true"
-                    displayFormat="{0} Employees">
-    </dxi-group-item>
-  </dxo-summary>
-  <dxo-search-panel [visible]="true"></dxo-search-panel>
-  <dxo-paging [pageSize]="10"></dxo-paging>
-  <dxo-group-panel [visible]="true"></dxo-group-panel>
-  <dxo-grouping #expand [autoExpandAll]="false"></dxo-grouping>
-</dx-data-grid>
+            <dxi-column dataField="name" caption="Name"></dxi-column>
+            <dxi-column dataField="surname" caption="Surname"></dxi-column>
+            <dxi-column dataField="email" caption="Email"></dxi-column>
+            <dxi-column dataField="address" caption="Address"></dxi-column>
+            <dxi-column dataField="salary" caption="Salary"></dxi-column>
+            <dxi-column dataField="companyId" caption="Company Name" [groupIndex]="0">
+              <dxo-lookup [dataSource]="CompanyForeignDataSource"
+                          displayExpr="name"
+                          valueExpr="id">
+              </dxo-lookup>
+            </dxi-column>
+            <dxo-summary>
+              <dxi-group-item column="salary"
+                              summaryType="count"
+                              [alignByColumn]="true"
+                              displayFormat="{0} Employees">
+              </dxi-group-item>
+            </dxo-summary>
+            <dxo-search-panel [visible]="true"></dxo-search-panel>
+            <dxo-paging [pageSize]="10"></dxo-paging>
+            <dxo-group-panel [visible]="true"></dxo-group-panel>
+            <dxo-grouping #expand [autoExpandAll]="false"></dxo-grouping>
+          </dx-data-grid>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

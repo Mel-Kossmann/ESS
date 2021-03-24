@@ -14,3 +14,45 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+
+.box.box-default {
+  border-top-color: #28A74F !important;
+}
+
+.box {
+  position: relative;
+  border-radius: 3px;
+  background: #ffffff !important;
+  border-top: 3px solid #d2d6de !important;
+  border: 1px solid lightgrey;
+  margin-bottom: 8px !important;
+  width: 100%;
+  padding: 15px;
+}
+
+.material-icons-headings-gy {
+  padding-right: 8px !important;
+  font-size: 25px !important;
+  padding-top: 5px;
+}
+
+.material-icons-gy {
+  padding-right: 8px !important;
+  font-size: 23px !important;
+}
+
+.icon-inline {
+  display: inline-flex;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: white !important;
+}
+
+.bg-white {
+  background-color: #28A74F !important;
+}
+
+.navbar-light .navbar-brand {
+  color: #ffffff !important;
+}
