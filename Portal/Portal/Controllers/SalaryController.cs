@@ -1,12 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DevExtreme.AspNet.Data;
+using Microsoft.AspNetCore.Mvc;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DevExtreme.AspNet.Data;
-using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
-using NLog;
 
 namespace Portal.Controllers
 {
@@ -22,7 +20,7 @@ namespace Portal.Controllers
         {
             var source = db.Employees.Join(db.Companies, p => p.CompanyId, q => q.Id, (p, q) => new { Employees = p, Companies = q })
                    .Where(s => s.Employees.CompanyId == s.Companies.Id)
-                   .GroupBy(pp => new { pp.Companies.Name})
+                   .GroupBy(pp => new { pp.Companies.Name })
                    .Select(ss => new { CompanyName = ss.Key.Name, aveSalary = Math.Round((decimal)ss.Average(a => a.Employees.Salary), 2) });
             return Ok(await DataSourceLoader.LoadAsync(source, loadOptions));
         }

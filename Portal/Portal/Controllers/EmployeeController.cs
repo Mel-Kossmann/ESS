@@ -1,12 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DevExtreme.AspNet.Data;
+﻿using DevExtreme.AspNet.Data;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using NLog;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Portal.Controllers
 {
@@ -67,7 +66,7 @@ namespace Portal.Controllers
             if (Obj == null) return StatusCode(409, "not found");
             JsonConvert.PopulateObject(values, Obj);
 
-            var validate = db.Employees.Where(e => 
+            var validate = db.Employees.Where(e =>
                 e.Name == Obj.Name
                 && e.Surname == Obj.Surname
                 && e.Email == Obj.Email
@@ -75,7 +74,7 @@ namespace Portal.Controllers
                 && e.Id != Obj.Id
             ).FirstOrDefault();
 
-            if(validate != null)
+            if (validate != null)
             {
                 return BadRequest("The employee already exists.");
             }
@@ -96,7 +95,7 @@ namespace Portal.Controllers
                 await db.SaveChangesAsync();
 
                 return Ok("Employee Deleted");
-               
+
             }
             catch (Exception e)
             {

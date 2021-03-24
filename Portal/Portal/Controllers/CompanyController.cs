@@ -1,12 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DevExtreme.AspNet.Data;
+﻿using DevExtreme.AspNet.Data;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using NLog;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Portal.Controllers
 {
@@ -36,7 +35,7 @@ namespace Portal.Controllers
             var Obj = new DataAccessLayer.DBc.Company();
             JsonConvert.PopulateObject(values, Obj);
             var validate = db.Companies.Where(c => c.Name == Obj.Name).FirstOrDefault();
-            if(validate != null)
+            if (validate != null)
             {
                 return BadRequest("Company name already exists.");
             }
@@ -57,7 +56,7 @@ namespace Portal.Controllers
             JsonConvert.PopulateObject(values, Obj);
             var validate = db.Companies.Where(c => c.Name == Obj.Name && c.Id != Obj.Id).FirstOrDefault();
 
-            if(validate != null)
+            if (validate != null)
             {
                 return BadRequest("Company name already exists.");
             }
@@ -78,7 +77,7 @@ namespace Portal.Controllers
                 await db.SaveChangesAsync();
 
                 return Ok("Company Deleted");
-               
+
             }
             catch (Exception e)
             {
