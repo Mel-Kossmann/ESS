@@ -23,9 +23,10 @@ namespace Portal.Controllers
             var source = db.Employees.Join(db.Companies, p => p.CompanyId, q => q.Id, (p, q) => new { Employees = p, Companies = q })
                    .Where(s => s.Employees.CompanyId == s.Companies.Id)
                    .GroupBy(pp => new { pp.Companies.Name})
-                   .Select(ss => new { CompanyName = ss.Key.Name, aveSalary = ss.Sum(a => a.Employees.Salary) / ss.Count()});
-            return Ok(source);
-
+                   .Select(ss => new { CompanyName = ss.Key.Name, aveSalary = Math.Round((decimal)ss.Average(a => a.Employees.Salary), 2) });
+            //easier way to work out average: Math.Round(Convert.ToDecimal(ss.Average(a => a.Employees.Salary)),2)
+            //long way to work out average: ss.Sum(a => a.Employees.Salary) / ss.Count()
+            return Ok(await DataSourceLoader.LoadAsync(source, loadOptions));
         }
     }
 }

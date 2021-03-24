@@ -21,10 +21,15 @@
             <dxo-filter-row [visible]="true"></dxo-filter-row>
             <dxo-header-filter [visible]="true"></dxo-header-filter>
             <dxo-group-panel [visible]="true"></dxo-group-panel>
-            <dxo-editing mode="row"
+            <dxo-editing mode="popup"
                          [allowAdding]="true"
                          [allowUpdating]="true"
                          [allowDeleting]="true">
+              <dxo-popup title="Employee Info"
+                         [showTitle]="true"
+                         [width]="700"
+                         [height]="525">
+              </dxo-popup>
             </dxo-editing>
             <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
             <dxo-export [enabled]="true" fileName="Employee-List"></dxo-export>

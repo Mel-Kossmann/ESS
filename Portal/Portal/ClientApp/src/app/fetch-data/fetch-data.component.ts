@@ -1,23 +1,30 @@
 import { Component, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 
 @Component({
   selector: 'app-fetch-data',
   templateUrl: './fetch-data.component.html'
 })
 export class FetchDataComponent {
-  public forecasts: WeatherForecast[];
+  dataSource: any;
+  CompanyForeignDataSource: any;
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<WeatherForecast[]>(baseUrl + 'weatherforecast').subscribe(result => {
-      this.forecasts = result;
-    }, error => console.error(error));
+  constructor(@Inject('BASE_URL') baseUrl: string) {
+
+    this.dataSource = this.dataSource = AspNetData.createStore({
+      key: 'id',
+      loadUrl: baseUrl + 'api/Employee',
+      updateUrl: baseUrl + 'api/Employee',
+      insertUrl: baseUrl + 'api/Employee',
+      deleteUrl: baseUrl + 'api/Employee'
+    });
+
+    this.CompanyForeignDataSource = {
+      store: AspNetData.createStore({
+        key: 'id',
+        loadUrl: baseUrl + 'api/Company',
+      }),
+      pagenate: true
+    }
   }
-}
-
-interface WeatherForecast {
-  date: string;
-  temperatureC: number;
-  temperatureF: number;
-  summary: string;
 }
