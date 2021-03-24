@@ -2,17 +2,21 @@ import { Component, Inject } from '@angular/core';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 
 @Component({
-  selector: 'app-counter-component',
-  templateUrl: './counter.component.html'
+  selector: 'app-detailed-view-component',
+  templateUrl: './detailed-view.component.html'
 })
-export class CounterComponent {
+export class DetailedViewComponent {
   dataSource: any;
   CompanyForeignDataSource: any;
 
   constructor(@Inject('BASE_URL') baseUrl: string) {
 
     this.dataSource = this.dataSource = AspNetData.createStore({
-      loadUrl: baseUrl + 'api/Salary'
+      key: 'id',
+      loadUrl: baseUrl + 'api/Employee',
+      updateUrl: baseUrl + 'api/Employee',
+      insertUrl: baseUrl + 'api/Employee',
+      deleteUrl: baseUrl + 'api/Employee'
     });
 
     this.CompanyForeignDataSource = {

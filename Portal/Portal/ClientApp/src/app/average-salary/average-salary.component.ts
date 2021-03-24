@@ -2,21 +2,17 @@ import { Component, Inject } from '@angular/core';
 import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 
 @Component({
-  selector: 'app-fetch-data',
-  templateUrl: './fetch-data.component.html'
+  selector: 'app-average-salary-component',
+  templateUrl: './average-salary.component.html'
 })
-export class FetchDataComponent {
+export class AverageSalaryComponent {
   dataSource: any;
   CompanyForeignDataSource: any;
 
   constructor(@Inject('BASE_URL') baseUrl: string) {
 
     this.dataSource = this.dataSource = AspNetData.createStore({
-      key: 'id',
-      loadUrl: baseUrl + 'api/Employee',
-      updateUrl: baseUrl + 'api/Employee',
-      insertUrl: baseUrl + 'api/Employee',
-      deleteUrl: baseUrl + 'api/Employee'
+      loadUrl: baseUrl + 'api/Salary'
     });
 
     this.CompanyForeignDataSource = {
