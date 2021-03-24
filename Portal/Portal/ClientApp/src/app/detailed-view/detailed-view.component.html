@@ -14,7 +14,13 @@
                 valueExpr="id">
     </dxo-lookup>
   </dxi-column>
-
+  <dxo-summary>
+    <dxi-group-item column="salary"
+                    summaryType="count"
+                    [alignByColumn]="true"
+                    displayFormat="{0} Employees">
+    </dxi-group-item>
+  </dxo-summary>
   <dxo-search-panel [visible]="true"></dxo-search-panel>
   <dxo-paging [pageSize]="10"></dxo-paging>
   <dxo-group-panel [visible]="true"></dxo-group-panel>
