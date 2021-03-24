@@ -1,13 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import * as AspNetData from 'devextreme-aspnet-data-nojquery';
 
 @Component({
   selector: 'app-counter-component',
   templateUrl: './counter.component.html'
 })
 export class CounterComponent {
-  public currentCount = 0;
+  dataSource: any;
+  CompanyForeignDataSource: any;
 
-  public incrementCounter() {
-    this.currentCount++;
+  constructor(@Inject('BASE_URL') baseUrl: string) {
+
+    this.dataSource = this.dataSource = AspNetData.createStore({
+      key: 'id',
+      loadUrl: baseUrl + 'api/Salary'
+    });
+
+    this.CompanyForeignDataSource = {
+      store: AspNetData.createStore({
+        key: 'id',
+        loadUrl: baseUrl + 'api/Company',
+      }),
+      pagenate: true
+    }
   }
 }

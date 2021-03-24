@@ -30,16 +30,6 @@ namespace DataAccessLayer
             }
         }
 
-        private static string BaseURL()
-        {
-            IConfiguration configuration = new ConfigurationBuilder()
-            .SetBasePath(System.IO.Directory.GetCurrentDirectory()) // Directory where the json files are located
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-            .Build();
-
-            return configuration.GetConnectionString("AppConnection");
-        }
-
         private static void SetConnectionString()
         {
             IConfiguration configuration = new ConfigurationBuilder()
