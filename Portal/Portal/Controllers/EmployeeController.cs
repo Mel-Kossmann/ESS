@@ -19,7 +19,9 @@ namespace Portal.Controllers
         [HttpGet]
         public async Task<IActionResult> Get(DataSourceLoadOptions loadOptions)
         {
-            var source = db.Employees
+            try
+            {
+                var source = db.Employees
                 .Select(p => new DataAccessLayer.DTO.Employee
                 {
                     Id = p.Id,
@@ -31,56 +33,81 @@ namespace Portal.Controllers
                     CompanyId = p.CompanyId
                 });
 
-            return Ok(await DataSourceLoader.LoadAsync(source, loadOptions));
+                return Ok(await DataSourceLoader.LoadAsync(source, loadOptions));
+            }
+            catch (Exception e)
+            {
+                logger.Error(e);
+                return BadRequest("Could not retrieve employees.");
+            }
+            
         }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromForm] string values)
         {
-            var Obj = new DataAccessLayer.DBc.Employee();
-            JsonConvert.PopulateObject(values, Obj);
-
-            var validate = db.Employees.Where(e =>
-               e.Name == Obj.Name
-               && e.Surname == Obj.Surname
-               && e.Email == Obj.Email
-               && e.Address == Obj.Address
-            ).FirstOrDefault();
-
-            if (validate != null)
+            try
             {
-                return BadRequest("The employee already exists.");
+                var Obj = new DataAccessLayer.DBc.Employee();
+                JsonConvert.PopulateObject(values, Obj);
+
+                var validate = db.Employees.Where(e =>
+                   e.Name == Obj.Name
+                   && e.Surname == Obj.Surname
+                   && e.Email == Obj.Email
+                   && e.Address == Obj.Address
+                ).FirstOrDefault();
+
+                if (validate != null)
+                {
+                    return BadRequest("The employee already exists.");
+                }
+
+                db.Employees.Add(Obj);
+                await db.SaveChangesAsync();
+
+                return Ok(Obj.Id);
             }
-
-            db.Employees.Add(Obj);
-            await db.SaveChangesAsync();
-
-            return Ok(Obj.Id);
+            catch (Exception e)
+            {
+                logger.Error(e);
+                return BadRequest("Employee not added.");
+            }
+           
         }
 
         [HttpPut]
         public async Task<IActionResult> Put([FromForm] int key, [FromForm] string values)
         {
-            var Obj = await db.Employees.FirstOrDefaultAsync(i => i.Id == key);
-
-            if (Obj == null) return StatusCode(409, "not found");
-            JsonConvert.PopulateObject(values, Obj);
-
-            var validate = db.Employees.Where(e =>
-                e.Name == Obj.Name
-                && e.Surname == Obj.Surname
-                && e.Email == Obj.Email
-                && e.Address == Obj.Address
-                && e.Id != Obj.Id
-            ).FirstOrDefault();
-
-            if (validate != null)
+            try
             {
-                return BadRequest("The employee already exists.");
-            }
+                var Obj = await db.Employees.FirstOrDefaultAsync(i => i.Id == key);
 
-            await db.SaveChangesAsync();
-            return Ok(Obj.Id);
+                if (Obj == null) return StatusCode(409, "not found");
+                JsonConvert.PopulateObject(values, Obj);
+
+                var validate = db.Employees.Where(e =>
+                    e.Name == Obj.Name
+                    && e.Surname == Obj.Surname
+                    && e.Email == Obj.Email
+                    && e.Address == Obj.Address
+                    && e.Id != Obj.Id
+                ).FirstOrDefault();
+
+                if (validate != null)
+                {
+                    return BadRequest("The employee already exists.");
+                }
+
+                await db.SaveChangesAsync();
+                return Ok(Obj.Id);
+            }
+            catch (Exception e)
+            {
+                logger.Error(e);
+                return BadRequest("Employee not updated.");
+            }
+            
         }
 
         [HttpDelete]
@@ -89,18 +116,18 @@ namespace Portal.Controllers
             try
             {
                 var Obj = await db.Employees.FirstOrDefaultAsync(e => e.Id == key);
-                if (Obj == null) return StatusCode(409, "Not found");
+                if (Obj == null) return StatusCode(409, "Not found.");
 
                 db.Employees.Remove(Obj);
                 await db.SaveChangesAsync();
 
-                return Ok("Employee Deleted");
+                return Ok("Employee Deleted.");
 
             }
             catch (Exception e)
             {
                 logger.Error(e);
-                return BadRequest("Employee not deleted");
+                return BadRequest("Employee not deleted.");
             }
 
         }

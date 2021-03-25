@@ -18,11 +18,19 @@ namespace Portal.Controllers
         [HttpGet]
         public async Task<IActionResult> Get(DataSourceLoadOptions loadOptions)
         {
-            var source = db.Employees.Join(db.Companies, p => p.CompanyId, q => q.Id, (p, q) => new { Employees = p, Companies = q })
-                   .Where(s => s.Employees.CompanyId == s.Companies.Id)
-                   .GroupBy(pp => new { pp.Companies.Name })
-                   .Select(ss => new { CompanyName = ss.Key.Name, aveSalary = Math.Round((decimal)ss.Average(a => a.Employees.Salary), 2) });
-            return Ok(await DataSourceLoader.LoadAsync(source, loadOptions));
+            try
+            {
+                var source = db.Employees.Join(db.Companies, p => p.CompanyId, q => q.Id, (p, q) => new { Employees = p, Companies = q })
+                  .Where(s => s.Employees.CompanyId == s.Companies.Id)
+                  .GroupBy(pp => new { pp.Companies.Name })
+                  .Select(ss => new { CompanyName = ss.Key.Name, aveSalary = Math.Round((decimal)ss.Average(a => a.Employees.Salary), 2) });
+                return Ok(await DataSourceLoader.LoadAsync(source, loadOptions));
+            }
+            catch(Exception e)
+            {
+                logger.Error(e);
+                return BadRequest("Could not calculate the average salary per company.");
+            }           
         }
     }
 }
