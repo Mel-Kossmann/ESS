@@ -19,7 +19,6 @@ Update the ESSConnection Server to your own server name. (dot = localhost)
 Visual Studio will install all the missing packages required to run the application
 
 When all the above is up and running, you can click on the run button.
-The first launch takes longer, thereafter it is quicker to launch the application.
 Your browser should open on localhost:44317
 
 Once the page loads, you will be able to:
