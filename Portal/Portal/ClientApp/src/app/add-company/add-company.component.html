@@ -34,6 +34,7 @@
             <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
             <dxo-export [enabled]="true" fileName="Company-List"></dxo-export>
             <dxi-column dataField="name" caption="Company Name">
+              <dxi-validation-rule type="required"></dxi-validation-rule>
             </dxi-column>
           </dx-data-grid>
         </div>

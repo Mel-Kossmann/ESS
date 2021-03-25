@@ -34,16 +34,28 @@
             <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
             <dxo-export [enabled]="true" fileName="Employee-List"></dxo-export>
 
-            <dxi-column dataField="name" caption="Name"></dxi-column>
-            <dxi-column dataField="surname" caption="Surname"></dxi-column>
-            <dxi-column dataField="email" caption="Email"></dxi-column>
-            <dxi-column dataField="address" caption="Address"></dxi-column>
-            <dxi-column dataField="salary" caption="Salary"></dxi-column>
+            <dxi-column dataField="name" caption="Name">
+              <dxi-validation-rule type="required"></dxi-validation-rule>
+            </dxi-column>
+            <dxi-column dataField="surname" caption="Surname">
+              <dxi-validation-rule type="required"></dxi-validation-rule>
+            </dxi-column>
+            <dxi-column dataField="email" caption="Email">
+              <dxi-validation-rule type="required"></dxi-validation-rule>
+              <dxi-validation-rule type="email"></dxi-validation-rule>
+            </dxi-column>
+            <dxi-column dataField="address" caption="Address">
+              <dxi-validation-rule type="required"></dxi-validation-rule>
+            </dxi-column>
+            <dxi-column dataField="salary" caption="Salary">
+              <dxi-validation-rule type="required"></dxi-validation-rule>
+            </dxi-column>
             <dxi-column dataField="companyId" caption="Company Name">
               <dxo-lookup [dataSource]="CompanyForeignDataSource"
                           displayExpr="name"
                           valueExpr="id">
               </dxo-lookup>
+              <dxi-validation-rule type="required"></dxi-validation-rule>
             </dxi-column>
           </dx-data-grid>
         </div>
