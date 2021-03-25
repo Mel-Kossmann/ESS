@@ -109,7 +109,7 @@ namespace Portal.Controllers
             catch (Exception e)
             {
                 logger.Error(e);
-                return BadRequest("Company not deleted");
+                return BadRequest("The Company not deleted. The company has employees.");
             }
 
         }

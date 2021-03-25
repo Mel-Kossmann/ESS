@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portal", "Portal\Portal.csproj", "{177E3978-79C2-44D6-AABD-7DD86CDB83C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portal", "Portal\Portal.csproj", "{177E3978-79C2-44D6-AABD-7DD86CDB83C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{43FD2755-DBDF-4D70-B671-6B61ED246143}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{43FD2755-DBDF-4D70-B671-6B61ED246143}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{D5D8CD98-556A-45C4-BC01-944B78B7C380}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{43FD2755-DBDF-4D70-B671-6B61ED246143}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43FD2755-DBDF-4D70-B671-6B61ED246143}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43FD2755-DBDF-4D70-B671-6B61ED246143}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5D8CD98-556A-45C4-BC01-944B78B7C380}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5D8CD98-556A-45C4-BC01-944B78B7C380}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5D8CD98-556A-45C4-BC01-944B78B7C380}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5D8CD98-556A-45C4-BC01-944B78B7C380}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
