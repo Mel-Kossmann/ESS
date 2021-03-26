@@ -2,7 +2,7 @@
 Employee Storage Service for companies
 
 # Requirements
-Visual Studio 
+Visual Studio
 SQL Server
 Browser
 
@@ -13,7 +13,7 @@ Download it here: https://dotnet.microsoft.com/download
 The database is a MSSQL db: a script of the DB can be found in the DB folder
 once the db is created you can restore the .bak file to import all the data
 
-Open the solution in VS or any other code editor
+Open the solution in VS
 In Solution Explorer navigate to appsettings.json 
 Update the ESSConnection Server to your own server name. (dot = localhost)
 Visual Studio will install all the missing packages required to run the application
